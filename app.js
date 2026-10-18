@@ -78,3 +78,21 @@ $('cancelarImportar').onclick=()=>{$('modalImportar').close();respaldoPendiente=
 $('confirmarImportar').onclick=()=>{if(!respaldoPendiente)return;try{localStorage.setItem(CLAVE,JSON.stringify(respaldoPendiente));datos=respaldoPendiente;respaldoPendiente=null;$('modalImportar').close();dibujar();dibujarSobres();aviso('Respaldo restaurado.');}catch(e){aviso('No se pudo restaurar. Revisa el espacio disponible.');}};
 $('btnOptimizar').onclick=()=>{try{dibujar();dibujarSobres();aviso('Vista actualizada. No se borraron datos.');}catch(e){aviso('No se pudo actualizar la vista.');}};
 dibujarSobres();
+
+// Evita escribir o pegar importes superiores al máximo, sin modificar registros guardados.
+(function limitarEntradaMonetaria(){
+  for(const id of ['montoTarjeta','semanalSobre','montoMovimiento']){
+    const campo=document.getElementById(id);
+    if(!campo)continue;
+    let ultimoValido=campo.value;
+    campo.addEventListener('focus',()=>{ultimoValido=campo.value;});
+    campo.addEventListener('input',()=>{
+      const valor=campo.value;
+      if(valor==='' || (Number.isFinite(Number(valor)) && Number(valor)<=MONTO_MAXIMO && Number(valor)>=0 && !/[eE]/.test(valor) && (!valor.includes('.') || valor.split('.')[1].length<=2))){
+        ultimoValido=valor;
+      }else{
+        campo.value=ultimoValido;
+      }
+    });
+  }
+})();
