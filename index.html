@@ -12,7 +12,7 @@
   <link rel="apple-touch-icon" href="icon.svg">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Finovix">
-  <link rel="stylesheet" href="style.css?v=8">
+  <link rel="stylesheet" href="style.css?v=9">
   <link rel="stylesheet" href="tema.css?v=3">
 </head>
 <body>
@@ -39,7 +39,7 @@
 <dialog id="modalTarjeta"><form id="formTarjeta">
   <h2 id="tituloModal">Agregar tarjeta</h2><p class="subtitulo-modal">Registra o modifica los datos de tu tarjeta.</p>
   <label for="nombreTarjeta">Nombre de la tarjeta</label><input id="nombreTarjeta" type="text" maxlength="40" placeholder="Ej. BBVA" required>
-  <label for="montoTarjeta">Pago para no generar intereses ($)</label><input id="montoTarjeta" type="number" min="0" step="0.01" required>
+  <label for="montoTarjeta">Pago para no generar intereses ($)</label><input id="montoTarjeta" type="number" min="0" step="0.01" required max="100000000">
   <label for="fechaTarjeta">Fecha límite de pago</label><input id="fechaTarjeta" type="date">
   <label for="imagenTarjeta">Logo de la tarjeta (opcional)</label>
   <div class="selector-logo"><div id="vistaLogo" class="vista-logo">BB</div><div class="opciones-logo"><input id="imagenTarjeta" type="file" accept="image/*"><button type="button" id="btnQuitarLogo" class="boton boton-secundario">Quitar logo</button><small>Elige una imagen de tu galería.</small></div></div>
@@ -47,16 +47,16 @@
 </form></dialog>
 <dialog id="modalEliminar"><div class="confirmacion"><div class="icono-alerta">!</div><h2>¿Eliminar tarjeta?</h2><p id="mensajeEliminar"></p><p class="advertencia">También se eliminarán sus registros de todos los meses. Esta acción no se puede deshacer.</p><div class="acciones-modal"><button type="button" class="boton boton-secundario" id="btnNoEliminar">Cancelar</button><button type="button" class="boton boton-rojo" id="btnConfirmarEliminar">Sí, eliminar</button></div></div></dialog>
 <dialog id="modalMes"><div class="confirmacion"><h2>Preparar mes</h2><p>Selecciona el mes que deseas administrar.</p><label for="nuevoMes">Mes</label><input type="month" id="nuevoMes"><p class="advertencia">Si el mes es nuevo, las tarjetas comenzarán con montos en cero y pendientes.</p><div class="acciones-modal"><button type="button" class="boton boton-secundario" id="btnCancelarMes">Cancelar</button><button type="button" class="boton boton-verde" id="btnGuardarMes">Continuar</button></div></div></dialog>
-<dialog id="modalSobre"><form id="formSobre"><h2 id="tituloSobre">Agregar sobre</h2><p class="subtitulo-modal">Define tu aportación semanal.</p><label for="nombreSobre">Nombre</label><input id="nombreSobre" maxlength="60" required><label for="semanalSobre">Aportación semanal ($)</label><input id="semanalSobre" type="number" min="0" step="0.01" required><div class="acciones-modal"><button type="button" class="boton boton-secundario" id="cancelarSobre">Cancelar</button><button class="boton boton-verde" type="submit">Guardar</button></div></form></dialog>
-<dialog id="modalMovimiento"><form id="formMovimiento"><h2 id="tituloMovimiento">Movimiento</h2><p class="subtitulo-modal" id="detalleMovimiento"></p><label for="montoMovimiento">Cantidad ($)</label><input id="montoMovimiento" type="number" min="0.01" step="0.01" required><div class="acciones-modal"><button type="button" class="boton boton-secundario" id="cancelarMovimiento">Cancelar</button><button type="submit" class="boton boton-verde">Confirmar</button></div></form></dialog>
+<dialog id="modalSobre"><form id="formSobre"><h2 id="tituloSobre">Agregar sobre</h2><p class="subtitulo-modal">Define tu aportación semanal.</p><label for="nombreSobre">Nombre</label><input id="nombreSobre" maxlength="60" required><label for="semanalSobre">Aportación semanal ($)</label><input id="semanalSobre" type="number" min="0" step="0.01" required max="100000000"><div class="acciones-modal"><button type="button" class="boton boton-secundario" id="cancelarSobre">Cancelar</button><button class="boton boton-verde" type="submit">Guardar</button></div></form></dialog>
+<dialog id="modalMovimiento"><form id="formMovimiento"><h2 id="tituloMovimiento">Movimiento</h2><p class="subtitulo-modal" id="detalleMovimiento"></p><label for="montoMovimiento">Cantidad ($)</label><input id="montoMovimiento" type="number" min="0.01" step="0.01" required max="100000000"><div class="acciones-modal"><button type="button" class="boton boton-secundario" id="cancelarMovimiento">Cancelar</button><button type="submit" class="boton boton-verde">Confirmar</button></div></form></dialog>
 <dialog id="modalAccionSobre"><div class="confirmacion"><h2 id="tituloAccionSobre">Archivar sobre</h2><p id="detalleAccionSobre"></p><div class="acciones-modal"><button type="button" class="boton boton-secundario" id="cancelarAccionSobre">Cancelar</button><button type="button" class="boton boton-verde" id="confirmarAccionSobre">Confirmar</button></div></div></dialog>
 <dialog id="modalImportar"><div class="confirmacion"><h2>Restaurar respaldo</h2><p>Se reemplazarán todos los datos actuales. Descarga antes una copia de seguridad.</p><div class="acciones-modal"><button type="button" class="boton boton-secundario" id="cancelarImportar">Cancelar</button><button type="button" class="boton boton-rojo" id="confirmarImportar">Reemplazar datos</button></div></div></dialog><div id="aviso" class="aviso" role="status"></div>
-<script src="app.js?v=6"></script>
+<script src="app.js?v=7"></script>
 <script src="tema.js?v=3"></script>
 <script>
 (function(){
   // Busca cambios al abrir la aplicación sin tocar localStorage.
-  const VERSION_FINOVIX='20261018-1';
+  const VERSION_FINOVIX='20261018-2';
   let verificando=false;
   async function revisarVersion(){
     if(verificando || !navigator.onLine || document.visibilityState==='hidden')return;
