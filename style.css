@@ -33,3 +33,9 @@ html,body{max-width:100%;overflow-x:clip}
 #formTarjeta > *{min-width:0;max-width:100%;}
 #formTarjeta #fechaTarjeta{display:block;inline-size:100%;min-inline-size:0;max-inline-size:100%;box-sizing:border-box;overflow:hidden;-webkit-appearance:none;appearance:none;}
 #formTarjeta #fechaTarjeta::-webkit-date-and-time-value{min-width:0;text-align:left;}
+
+/* Evita el zoom automático de Safari al enfocar formularios en pantallas táctiles.
+   Se conserva el zoom manual por accesibilidad y el diseño adaptable. */
+@media (hover:none) and (pointer:coarse) {
+  input, select, textarea { font-size:16px; }
+}
