@@ -1,6 +1,6 @@
 {
-  "name": "Gestor de Pagos",
-  "short_name": "Gestor de Pagos",
+  "name": "Finovix",
+  "short_name": "Finovix",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
