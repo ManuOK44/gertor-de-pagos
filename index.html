@@ -12,7 +12,7 @@
   <link rel="apple-touch-icon" href="icon.svg">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Gestor de Pagos">
-  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="style.css?v=8">
   <link rel="stylesheet" href="tema.css?v=3">
 </head>
 <body>
@@ -35,7 +35,7 @@
 <section class="resumen"><p class="texto-suave">Capital disponible en sobres activos</p><h2 id="totalCapital">$0.00</h2><div class="resumen-inferior"><span id="cuentaSobres"></span><span id="totalSemanal"></span></div><p class="nota" id="totalMensual"></p><p class="nota" id="depositadoMes"></p></section>
 <div class="encabezado-seccion"><div><h2>Mis sobres</h2><p>Aportaciones y movimientos.</p></div><button class="boton boton-verde" id="btnAgregarSobre">+ Agregar</button></div><section id="listaSobres" class="lista-tarjetas"></section><div class="encabezado-seccion"><div><h2>Sobres archivados</h2><p>Se conserva su historial.</p></div></div><section id="listaArchivados" class="lista-tarjetas"></section></div>
 <section class="herramientas mantenimiento"><h2>Seguridad y mantenimiento</h2><p class="nota">Los datos se guardan en este navegador. Descarga respaldos periódicamente.</p><button class="boton boton-secundario" id="btnExportar">Descargar respaldo</button><label for="archivoRespaldo">Importar respaldo (.json)</label><input type="file" id="archivoRespaldo" accept=".json,application/json"><button class="boton boton-secundario" id="btnOptimizar">Optimizar aplicación</button></section>
-<footer><p>Tus finanzas, bajo tu control.</p><p>Información guardada en este navegador.</p></footer></main>
+<section class="apoyo-desarrollador"><h2>❤️ Apoya al desarrollador</h2><p>Si esta aplicación te ha sido útil, puedes apoyar su desarrollo con una aportación voluntaria de cualquier cantidad.</p><div class="apoyo-datos"><span>Mercado Pago · CLABE interbancaria</span><strong class="apoyo-clabe" id="clabeApoyo">722969020037797824</strong><button type="button" class="boton boton-verde" id="copiarClabeApoyo">Copiar CLABE</button><span class="apoyo-estado" id="estadoClabeApoyo" role="status"></span></div><p>¡Muchas gracias por tu apoyo!</p></section><footer><p>Tus finanzas, bajo tu control.</p><p>Información guardada en este navegador.</p></footer></main>
 <dialog id="modalTarjeta"><form id="formTarjeta">
   <h2 id="tituloModal">Agregar tarjeta</h2><p class="subtitulo-modal">Registra o modifica los datos de tu tarjeta.</p>
   <label for="nombreTarjeta">Nombre de la tarjeta</label><input id="nombreTarjeta" type="text" maxlength="40" placeholder="Ej. BBVA" required>
@@ -70,4 +70,4 @@
   });
 })();
 </script>
-</body></html>
+<script>(function(){const b=document.getElementById('copiarClabeApoyo'),s=document.getElementById('estadoClabeApoyo');b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText('722969020037797824');s.textContent='¡CLABE copiada!';}catch(e){s.textContent='Mantén presionada la CLABE para copiarla.';}});})();</script></body></html>
