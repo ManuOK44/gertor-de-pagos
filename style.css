@@ -22,3 +22,8 @@ html,body{max-width:100%;overflow-x:clip}
 .resumen h2,.sobre-info strong,.movimiento b,.resumen-inferior span,.nota{overflow-wrap:anywhere;word-break:break-word}
 .sobre-info{grid-template-columns:repeat(2,minmax(0,1fr))}
 @media(max-width:420px){.tarjeta-superior{flex-wrap:wrap}.tarjeta-superior>div:last-child{max-width:100%;margin-left:auto}.sobre-info strong{font-size:14px}}
+
+/* Centrado consistente de los campos de fecha en iPhone y otros dispositivos */
+#modalTarjeta, #modalMes { box-sizing:border-box; margin-inline:auto; }
+#fechaTarjeta, #nuevoMes { box-sizing:border-box; width:100%; max-width:100%; min-width:0; display:block; margin-inline:auto; }
+#modalMes .confirmacion { margin-inline:auto; }
