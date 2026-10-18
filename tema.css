@@ -1,0 +1,20 @@
+/* Selector de apariencia */
+.tema-control{display:flex;align-items:center;gap:9px;color:white;font-size:12px;font-weight:650;white-space:nowrap}
+.tema-switch{position:relative;display:inline-block;width:51px;height:31px;flex-shrink:0}
+.tema-switch input{position:absolute;opacity:0;width:100%;height:100%;margin:0;z-index:2;cursor:pointer}
+.tema-pista{position:absolute;inset:0;background:#9ba7b9;border-radius:30px;transition:background .2s}
+.tema-pista:before{content:"";position:absolute;width:25px;height:25px;left:3px;top:3px;border-radius:50%;background:white;box-shadow:0 1px 4px #0003;transition:transform .2s}
+.tema-switch input:checked+.tema-pista{background:#34c759}
+.tema-switch input:checked+.tema-pista:before{transform:translateX(20px)}
+.tema-switch input:focus-visible+.tema-pista{outline:3px solid #8bbaff;outline-offset:3px}
+html.tema-oscuro{color-scheme:dark;--fondo:#101722;--azul:#182841;--texto:#eef3fb;--gris:#aab6c9;--borde:#39485d;--verde-claro:#163e34;--rojo-claro:#4c2931}
+.tema-oscuro .resumen,.tema-oscuro .herramientas,.tema-oscuro .tarjeta,.tema-oscuro .vacio,.tema-oscuro .pestanas,.tema-oscuro dialog{background:#1d293b;color:var(--texto)}
+.tema-oscuro select,.tema-oscuro input:not([type=checkbox]),.tema-oscuro #nuevoMes{background:#142033;color:var(--texto);border-color:var(--borde)}
+.tema-oscuro .boton-secundario,.tema-oscuro .boton-editar,.tema-oscuro .icono-banco,.tema-oscuro .vista-logo{background:#34445b;color:#eef3fb}
+.tema-oscuro .sobre-info>div{background:#29384c}
+.tema-oscuro .informacion{background:#24354c}
+.tema-oscuro .informacion p,.tema-oscuro .icono-info{color:#c0cee0}
+.tema-oscuro .herramientas label,.tema-oscuro #formTarjeta label,.tema-oscuro #formSobre label,.tema-oscuro #formMovimiento label,.tema-oscuro .confirmacion label{color:#b6c5da}
+.tema-oscuro .barra{background:#36445a}
+.tema-oscuro .confirmacion .advertencia{color:#ffb8bf}
+@media(max-width:380px){.tema-control .tema-texto{display:none}}
