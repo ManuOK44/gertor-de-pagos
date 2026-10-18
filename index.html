@@ -11,11 +11,12 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Gestor de Pagos">
   <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="tema.css?v=1">
 </head>
 <body>
 <header class="encabezado">
   <div class="marca"><div class="logo">$</div><div><h1>Gestor de Pagos</h1><p>Tarjetas y sobres de ahorro</p></div></div>
-  <span class="etiqueta">PERSONAL</span>
+  <label class="tema-control" for="interruptorTema"><span class="tema-texto">Modo oscuro</span><span class="tema-switch"><input id="interruptorTema" type="checkbox" role="switch" aria-label="Activar modo oscuro"><span class="tema-pista"></span></span></label>
 </header>
 <main class="contenedor"><nav class="pestanas"><button class="pestana activa" data-tab="tarjetas">Mis tarjetas</button><button class="pestana" data-tab="sobres">Mis sobres</button></nav><div id="seccionTarjetas">
   <section class="resumen">
@@ -49,4 +50,5 @@
 <dialog id="modalAccionSobre"><div class="confirmacion"><h2 id="tituloAccionSobre">Archivar sobre</h2><p id="detalleAccionSobre"></p><div class="acciones-modal"><button type="button" class="boton boton-secundario" id="cancelarAccionSobre">Cancelar</button><button type="button" class="boton boton-verde" id="confirmarAccionSobre">Confirmar</button></div></div></dialog>
 <dialog id="modalImportar"><div class="confirmacion"><h2>Restaurar respaldo</h2><p>Se reemplazarán todos los datos actuales. Descarga antes una copia de seguridad.</p><div class="acciones-modal"><button type="button" class="boton boton-secundario" id="cancelarImportar">Cancelar</button><button type="button" class="boton boton-rojo" id="confirmarImportar">Reemplazar datos</button></div></div></dialog><div id="aviso" class="aviso" role="status"></div>
 <script src="app.js?v=5"></script>
+<script src="tema.js?v=1"></script>
 </body></html>
