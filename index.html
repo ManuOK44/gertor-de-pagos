@@ -55,6 +55,29 @@
 <script src="tema.js?v=3"></script>
 <script>
 (function(){
+  // Busca cambios al abrir la aplicación sin tocar localStorage.
+  const VERSION_FINOVIX='20261018-1';
+  let verificando=false;
+  async function revisarVersion(){
+    if(verificando || !navigator.onLine || document.visibilityState==='hidden')return;
+    verificando=true;
+    try{
+      const url=new URL(location.href);
+      url.searchParams.set('revision',String(Date.now()));
+      const respuesta=await fetch(url.toString(),{cache:'no-store'});
+      if(!respuesta.ok)return;
+      const pagina=await respuesta.text();
+      const encontrada=pagina.match(/VERSION_FINOVIX='([^']+)'/);
+      if(encontrada && encontrada[1]!==VERSION_FINOVIX){
+        location.replace(url.toString());
+      }
+    }catch(error){}finally{verificando=false;}
+  }
+  window.addEventListener('pageshow',revisarVersion);
+  window.addEventListener('online',revisarVersion);
+  document.addEventListener('visibilitychange',function(){
+    if(document.visibilityState==='visible')revisarVersion();
+  });
   const key='gestorPagosUltimaRevision_v1';
   window.addEventListener('pageshow',function(){
     try{
