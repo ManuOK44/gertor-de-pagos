@@ -4,14 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#101b35">
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
   <title>Gestor de Pagos</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icon.svg">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Gestor de Pagos">
-  <link rel="stylesheet" href="style.css?v=5">
-  <link rel="stylesheet" href="tema.css?v=2">
+  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="tema.css?v=3">
 </head>
 <body>
 <header class="encabezado">
@@ -49,6 +51,23 @@
 <dialog id="modalMovimiento"><form id="formMovimiento"><h2 id="tituloMovimiento">Movimiento</h2><p class="subtitulo-modal" id="detalleMovimiento"></p><label for="montoMovimiento">Cantidad ($)</label><input id="montoMovimiento" type="number" min="0.01" step="0.01" required><div class="acciones-modal"><button type="button" class="boton boton-secundario" id="cancelarMovimiento">Cancelar</button><button type="submit" class="boton boton-verde">Confirmar</button></div></form></dialog>
 <dialog id="modalAccionSobre"><div class="confirmacion"><h2 id="tituloAccionSobre">Archivar sobre</h2><p id="detalleAccionSobre"></p><div class="acciones-modal"><button type="button" class="boton boton-secundario" id="cancelarAccionSobre">Cancelar</button><button type="button" class="boton boton-verde" id="confirmarAccionSobre">Confirmar</button></div></div></dialog>
 <dialog id="modalImportar"><div class="confirmacion"><h2>Restaurar respaldo</h2><p>Se reemplazarán todos los datos actuales. Descarga antes una copia de seguridad.</p><div class="acciones-modal"><button type="button" class="boton boton-secundario" id="cancelarImportar">Cancelar</button><button type="button" class="boton boton-rojo" id="confirmarImportar">Reemplazar datos</button></div></div></dialog><div id="aviso" class="aviso" role="status"></div>
-<script src="app.js?v=5"></script>
-<script src="tema.js?v=2"></script>
+<script src="app.js?v=6"></script>
+<script src="tema.js?v=3"></script>
+<script>
+(function(){
+  const key='gestorPagosUltimaRevision_v1';
+  window.addEventListener('pageshow',function(){
+    try{
+      const now=Date.now();
+      const last=Number(sessionStorage.getItem(key)||0);
+      if(last && now-last>15*60*1000){
+        sessionStorage.setItem(key,String(now));
+        location.reload();
+      }else if(!last){
+        sessionStorage.setItem(key,String(now));
+      }
+    }catch(e){}
+  });
+})();
+</script>
 </body></html>
