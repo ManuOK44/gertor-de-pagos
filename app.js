@@ -1,7 +1,8 @@
 "use strict";
 const MONTO_MAXIMO=100000000;
 const fechaLocalHoy=()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');};
-function fechaMinima(){const hoy=fechaLocalHoy();const campo=$('fechaTarjeta');if(campo)campo.min=hoy;return hoy;}
+function fechaMinima(){const hoy=fechaLocalHoy();const campo=$('fechaTarjeta');if(campo){campo.min=hoy;if(campo.value&&campo.value<hoy)campo.value=hoy;}return hoy;}
+document.addEventListener('DOMContentLoaded',()=>{const campo=document.getElementById('fechaTarjeta');if(!campo)return;fechaMinima();campo.addEventListener('focus',fechaMinima);campo.addEventListener('change',fechaMinima);campo.addEventListener('input',fechaMinima);});
 function validarMonto(n,min=0){if(!Number.isFinite(n)||n<min||n>MONTO_MAXIMO){aviso('La cantidad debe estar entre '+min+' y $100,000,000.');return false;}return true;}
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)fechaMinima();});
 const CLAVE = "misTarjetasCredito_v1";
