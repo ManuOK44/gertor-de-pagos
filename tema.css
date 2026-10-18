@@ -18,3 +18,6 @@ html.tema-oscuro{color-scheme:dark;--fondo:#101722;--azul:#182841;--texto:#eef3f
 .tema-oscuro .barra{background:#36445a}
 .tema-oscuro .confirmacion .advertencia{color:#ffb8bf}
 @media(max-width:380px){.tema-control .tema-texto{display:none}}
+
+.tema-control .tema-texto{color:#dbeafe;transition:color .2s}
+.tema-oscuro .tema-control .tema-texto{color:#fde68a}
