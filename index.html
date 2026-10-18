@@ -51,12 +51,12 @@
 <dialog id="modalMovimiento"><form id="formMovimiento"><h2 id="tituloMovimiento">Movimiento</h2><p class="subtitulo-modal" id="detalleMovimiento"></p><label for="montoMovimiento">Cantidad ($)</label><input id="montoMovimiento" type="number" min="0.01" step="0.01" required max="100000000"><div class="acciones-modal"><button type="button" class="boton boton-secundario" id="cancelarMovimiento">Cancelar</button><button type="submit" class="boton boton-verde">Confirmar</button></div></form></dialog>
 <dialog id="modalAccionSobre"><div class="confirmacion"><h2 id="tituloAccionSobre">Archivar sobre</h2><p id="detalleAccionSobre"></p><div class="acciones-modal"><button type="button" class="boton boton-secundario" id="cancelarAccionSobre">Cancelar</button><button type="button" class="boton boton-verde" id="confirmarAccionSobre">Confirmar</button></div></div></dialog>
 <dialog id="modalImportar"><div class="confirmacion"><h2>Restaurar respaldo</h2><p>Se reemplazarán todos los datos actuales. Descarga antes una copia de seguridad.</p><div class="acciones-modal"><button type="button" class="boton boton-secundario" id="cancelarImportar">Cancelar</button><button type="button" class="boton boton-rojo" id="confirmarImportar">Reemplazar datos</button></div></div></dialog><div id="aviso" class="aviso" role="status"></div>
-<script src="app.js?v=7"></script>
+<script src="app.js?v=8"></script>
 <script src="tema.js?v=3"></script>
 <script>
 (function(){
   // Busca cambios al abrir la aplicación sin tocar localStorage.
-  const VERSION_FINOVIX='20261018-2';
+  const VERSION_FINOVIX='20261018-3';
   let verificando=false;
   async function revisarVersion(){
     if(verificando || !navigator.onLine || document.visibilityState==='hidden')return;
