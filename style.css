@@ -27,3 +27,9 @@ html,body{max-width:100%;overflow-x:clip}
 #modalTarjeta, #modalMes { box-sizing:border-box; margin-inline:auto; }
 #fechaTarjeta, #nuevoMes { box-sizing:border-box; width:100%; max-width:100%; min-width:0; display:block; margin-inline:auto; }
 #modalMes .confirmacion { margin-inline:auto; }
+
+/* Safari iOS: evitar que el control nativo de fecha ensanche la cuadrícula */
+#formTarjeta{grid-template-columns:minmax(0,1fr);min-width:0;width:100%;}
+#formTarjeta > *{min-width:0;max-width:100%;}
+#formTarjeta #fechaTarjeta{display:block;inline-size:100%;min-inline-size:0;max-inline-size:100%;box-sizing:border-box;overflow:hidden;-webkit-appearance:none;appearance:none;}
+#formTarjeta #fechaTarjeta::-webkit-date-and-time-value{min-width:0;text-align:left;}
